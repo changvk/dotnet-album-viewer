@@ -7,13 +7,13 @@ pipeline {
         stage('Parallel') {
             steps {
                 parallel(
-                "Task 1" : {
-                    echo 'this is task 1.'
-                }
-                     "Task 2" : {
-                    echo 'this is task 2.'
-                }
-                    )
+                    "Task 1": {
+                        echo 'this is task 1.'
+                    },
+                    "Task 2": {
+                        echo 'this is task 2.'
+                    }
+                )
             }
         }
         stage('Test') {
