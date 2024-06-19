@@ -4,9 +4,16 @@ pipeline {
         cron('H/2 * * * *')
     }
     stages {
-        stage('Build') {
+        stage('Parallel') {
             steps {
-                bat 'C:/Jenkins/test.bat'
+                parallel(
+                "Task 1" : {
+                    echo 'this is task 1.'
+                }
+                     "Task 2" : {
+                    echo 'this is task 2.'
+                }
+                    )
             }
         }
         stage('Test') {
@@ -21,7 +28,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'C:/Jenkins/test.bat'  // Corrected the path to match the others
+                bat 'C:/Jenkins/test.bat'
             }
         }
     }
