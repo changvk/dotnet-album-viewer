@@ -32,8 +32,8 @@ pipeline {
          stage('Final Production') {
             steps {
                 bat 'c:/Jenkins/test.bat'
-                cmd echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                cmd echo '%BUILD_NUMBER%'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo '%BUILD_NUMBER%'
             }
         }
     }
