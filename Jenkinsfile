@@ -32,6 +32,7 @@ pipeline {
          stage('Final Production') {
             steps {
                 bat 'c:/Jenkins/test.bat'
+                echo '%BUILD_NUMBER%'
             }
         }
     }
