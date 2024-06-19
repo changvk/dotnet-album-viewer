@@ -33,8 +33,13 @@ pipeline {
             steps {
                 bat 'c:/Jenkins/test.bat'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                echo '%BUILD_NUMBER%'
             }
         }
+        
+        post {
+           failure {mail to: 'cvkai90@gmail.com',
+           subject: "Pipeline has failed: ${currentBuild.fullDisplayName}",
+           body: "Error in ${env.BUILD_URL}"
+      }
     }
 }
