@@ -27,5 +27,10 @@ pipeline {
                 bat 'c:/Jenkins/test.bat'
             }
         }
+         stage('Final Production') {
+            steps {
+                bat 'c:/Jenkins/test.bat'
+            }
+        }
     }
 }
