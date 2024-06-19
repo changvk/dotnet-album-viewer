@@ -40,6 +40,7 @@ pipeline {
            failure {mail to: 'cvkai90@gmail.com',
            subject: "Pipeline has failed: ${currentBuild.fullDisplayName}",
            body: "Error in ${env.BUILD_URL}"
+                   }
       }
     }
 }
