@@ -1,8 +1,9 @@
 pipeline {  
     agent any
-    triggers {
-        cron('H/2 * * * *')
-    }
+     parameters {         
+        string(name: 'p_developer', defaultValue: 'Developer Name', description: 'The developer name')         
+        string(name: 'p_greets', defaultValue: 'Give Greet', description: 'Greet')     
+    }  
     stages {
         stage('Parallel') {
             steps {
@@ -30,6 +31,14 @@ pipeline {
             steps {
                 bat 'C:/Jenkins/test.bat'
             }
+        }
+        stage('Greet') {             
+            steps {                 
+                script {                     
+                    def greetingMessage = "${params.p_developer}, ${params.p_greets}!"                     
+                    echo greetingMessage                 
+                }             
+            }         
         }
     }
     post {
